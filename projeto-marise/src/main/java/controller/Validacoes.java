@@ -33,12 +33,12 @@ public class Validacoes {
         
         //Verificando se o componente já existe no banco
         if(maquinaAlunoResultados.isEmpty()){
-            template.update("INSERT INTO Maquina Values(?, ?)", maquina.getHostNameMaquinaOshi(), user.getIdAluno());
+            template.update("INSERT INTO Maquina Values(null,?, ?)", maquina.getHostNameMaquinaOshi(), user.getIdAluno());
         }
         
         
         if(cpuResultados.isEmpty()){
-            template.update("INSERT INTO Componente VALUES(?, ?);", info.getNomeCpu(),tipoCPU);
+            template.update("INSERT INTO Componente VALUES(null,?, ?);", info.getNomeCpu(),tipoCPU);
         }
         
 //        if(nomeMemoriaResultados.isEmpty()){
@@ -46,7 +46,7 @@ public class Validacoes {
 //        }
         
         if(nomeDiscoResultados.isEmpty()){
-            template.update("INSERT INTO Componente VALUES(?, ?);", info.getNomeDisco(),tipoDisco);
+            template.update("INSERT INTO Componente VALUES(null,?, ?);", info.getNomeDisco(),tipoDisco);
         }
 
      }
@@ -65,8 +65,8 @@ public class Validacoes {
             Date data1 = new Date();
             if(cpu != null  && disco != null){
                 //template.update("INSERT INTO ComponenteMaquina VALUES(?, ?, ?, ?)", idMaquina, memoria.getIdComponente(), porcentagemMemoria,data1);
-                template.update("INSERT INTO ComponenteMaquina VALUES(?, ?, ?, ?)", idMaquina, cpu.getIdComponente(), porcentagemCpu, data1);
-                template.update("INSERT INTO ComponenteMaquina VALUES(?, ?, ?, ?)", idMaquina, disco.getIdComponente(), porcentagemDisco, data1);
+                template.update("INSERT INTO ComponenteMaquina VALUES(null,?, ?, ?, ?)", idMaquina, cpu.getIdComponente(), porcentagemCpu, data1);
+                template.update("INSERT INTO ComponenteMaquina VALUES(null,?, ?, ?, ?)", idMaquina, disco.getIdComponente(), porcentagemDisco, data1);
                 System.out.println("Componente Inserido Com Sucesso");
             }
             else{
