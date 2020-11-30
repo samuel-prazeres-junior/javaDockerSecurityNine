@@ -30,9 +30,9 @@ public class InfoComponentes {
 
         
         //Atributos
-        private String tipoMemoria = hal.getMemory().getPhysicalMemory().get(0).getMemoryType();
-        private long clockMemoria = hal.getMemory().getPhysicalMemory().get(0).getClockSpeed();
-        private String nomeMemoria = tipoMemoria + " " + clockMemoria/1000000;
+//        private String tipoMemoria = hal.getMemory().getPhysicalMemory().get(0).getMemoryType();;
+//        private long clockMemoria = hal.getMemory().getPhysicalMemory().get(0).getClockSpeed();
+//        private String nomeMemoria = tipoMemoria + " " + clockMemoria/1000000;
         private String nomeCpu =  cpu.getProcessorIdentifier().getName();
         private String nomeDisco = hal.getDiskStores().get(0).getName();
        
@@ -79,9 +79,9 @@ public class InfoComponentes {
         Double totalUsadoPorcentagem = (espacoTotalUsadoConvertido/espacoTotalConvertido)*100;
         return totalUsadoPorcentagem;
     }
-    public String getNomeMemoria() {
-        return nomeMemoria;
-    }
+//    public String getNomeMemoria() {
+//        return nomeMemoria;
+//    }
 
     public String getNomeCpu() {
         return nomeCpu;

@@ -25,7 +25,7 @@ public class Validacoes {
             //select da tabela componente
             List cpuResultados = template.queryForList("SELECT idComponente FROM Componente where nomeComponente = ? and tipoComponente = ?;", info.getNomeCpu(), tipoCPU);
             //System.out.println(cpuResultados);
-            List nomeMemoriaResultados = template.queryForList("SELECT idComponente FROM Componente where nomeComponente = ? and tipoComponente = ?;", info.getNomeMemoria(), tipoMemoria);
+            //List nomeMemoriaResultados = template.queryForList("SELECT idComponente FROM Componente where nomeComponente = ? and tipoComponente = ?;", info.getNomeMemoria(), tipoMemoria);
             //System.out.println(nomeMemoriaResultados);
             List nomeDiscoResultados = template.queryForList("SELECT idComponente FROM Componente where nomeComponente = ? and tipoComponente = ?;", info.getNomeDisco(), tipoDisco);
             //System.out.println(nomeDiscoResultados);
@@ -41,9 +41,9 @@ public class Validacoes {
             template.update("INSERT INTO Componente VALUES(?, ?);", info.getNomeCpu(),tipoCPU);
         }
         
-        if(nomeMemoriaResultados.isEmpty()){
-            template.update("INSERT INTO Componente VALUES(?, ?);", info.getNomeMemoria(),tipoMemoria);
-        }
+//        if(nomeMemoriaResultados.isEmpty()){
+//            template.update("INSERT INTO Componente VALUES(?, ?);", info.getNomeMemoria(),tipoMemoria);
+//        }
         
         if(nomeDiscoResultados.isEmpty()){
             template.update("INSERT INTO Componente VALUES(?, ?);", info.getNomeDisco(),tipoDisco);
@@ -60,11 +60,11 @@ public class Validacoes {
         }
         public void insertComponenteMaquina(JdbcTemplate template,Integer idMaquina, Double porcentagemCpu, Double porcentagemMemoria, Double porcentagemDisco){
             Componente cpu  = componenteMaquina(template, info.getNomeCpu());
-            Componente memoria = componenteMaquina(template, info.getNomeMemoria());
+//            Componente memoria = componenteMaquina(template, info.getNomeMemoria());
             Componente disco = componenteMaquina(template, info.getNomeDisco());
             Date data1 = new Date();
-            if(cpu != null && memoria != null && disco != null){
-                template.update("INSERT INTO ComponenteMaquina VALUES(?, ?, ?, ?)", idMaquina, memoria.getIdComponente(), porcentagemMemoria,data1);
+            if(cpu != null  && disco != null){
+                //template.update("INSERT INTO ComponenteMaquina VALUES(?, ?, ?, ?)", idMaquina, memoria.getIdComponente(), porcentagemMemoria,data1);
                 template.update("INSERT INTO ComponenteMaquina VALUES(?, ?, ?, ?)", idMaquina, cpu.getIdComponente(), porcentagemCpu, data1);
                 template.update("INSERT INTO ComponenteMaquina VALUES(?, ?, ?, ?)", idMaquina, disco.getIdComponente(), porcentagemDisco, data1);
                 System.out.println("Componente Inserido Com Sucesso");
