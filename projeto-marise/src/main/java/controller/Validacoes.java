@@ -77,7 +77,7 @@ public class Validacoes {
   public Usuario verificarLogin(JdbcTemplate template, String login, String senha){
        List<Usuario> usuarios;
 
-       usuarios = template.query("SELECT * FROM aluno WHERE emailAluno = ? AND senhaAluno = ?", new BeanPropertyRowMapper<>(Usuario.class), login, senha);
+       usuarios = template.query("SELECT * FROM Aluno WHERE emailAluno = ? AND senhaAluno = ?", new BeanPropertyRowMapper<>(Usuario.class), login, senha);
        
          if(!usuarios.isEmpty()){ 
                 Usuario user = usuarios.get(0);
